@@ -2,8 +2,10 @@ model_name_or_path=<path_to_your_model>
 train_data=<path_to_your_training_data>
 output_dir=./checkpoints/pretrain_checkpoints
 deepspeed_config=./config/zero-3.yaml
+export OMP_NUM_THREADS=8
 
-torchrun --nproc_per_node 1 trainer/sft_trainer.py \
+torchrun --nproc_per_node 8 trainer/sft_trainer.py \
+    --use_lora True \
     --max_len 512 \
     --overwrite_cache False \
     --model_name_or_path $model_name_or_path \
@@ -19,6 +21,6 @@ torchrun --nproc_per_node 1 trainer/sft_trainer.py \
     --save_total_limit 3 \
     --logging_steps 1 \
     --report_to "swanlab" \
-    --run_name "minimind-sft" \
+    --run_name "minimind-sft-lora" \
     --dataloader_num_workers 16 \
     --bf16 True
