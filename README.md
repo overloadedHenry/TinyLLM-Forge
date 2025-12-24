@@ -50,8 +50,13 @@ torchrun --nproc_per_node 8 trainer/pertrain.py
 预训练的脚本路径为`./scripts/sft.sh`。若要进行预训练，请先检查脚本中的路径和设置，然后在命令行中执行`bash ./scripts/sft.sh`。
 关键设置解释同预训练。
 
-**3. 其他算法代码**
-即将完成。
+**3. 直接偏好优化（Direct Preference Optimization, DPO）**
+启动路径如上，数据集请使用`dpo.jsonl`
+
+**4. 近端策略优化（Proximal Policy Optimization, PPO）**
+即将完成
+
+
 
 ### 训练过程记录
 **预训练**
@@ -61,7 +66,9 @@ torchrun --nproc_per_node 8 trainer/pertrain.py
 ### TO DO
 - [x] Pretrain, SFT代码测试
 - [x] Online Distillation (在线蒸馏) 测试
-- [ ] DPO, GRPO, PPO 测试
+- [x] DPO 测试
+- [ ] PPO 测试
+- [ ] GRPO 测试
 - [ ] MoE模型测试
 - [ ] 教学文档
 
